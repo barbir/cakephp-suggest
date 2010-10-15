@@ -38,14 +38,14 @@ class SuggestHelper extends AppHelper
 		$modelId = $this->__extractSetting($settings, 'modelId', '');
 		if($modelId == '')
 		{
-			$modelId = $view->model;
+			$modelId = $view->params['models'][0];
 		}
 
 		// get the current controller name
 		$controllerName = $view->params['controller'];
 		
 		// generate the suggest url for the ajax request
-		$suggestUrl = $view->Html->url(array('controller' => 'suggest', 'action' => 'index'));
+		$suggestUrl = $view->Html->url(array('plugin' => 'suggest', 'controller' => 'suggest', 'action' => 'index'));
 
 		$script = "
 			<script type=\"text/javascript\">
