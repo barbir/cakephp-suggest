@@ -1,7 +1,6 @@
 <?php
-    foreach ($data as $datum)
+    foreach ($data as $value)
 	{
-		$value = $datum['value'];
 		echo "<li><a href='#' onclick=\"return false;\">$value</a></li>";
     }
 ?>

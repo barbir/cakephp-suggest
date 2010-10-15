@@ -45,9 +45,7 @@ class Suggest extends AppModel
 		);
 
 		// simplify the results
-		$simplifiedResults = array();
-		foreach($results as $result)
-			$simplifiedResults[count($simplifiedResults)] = array('value' => $result[$model][$field]);
+		$simplifiedResults = Set::extract(sprintf('/%s/%s', $model, $field), $results);
 
 		return $simplifiedResults;
 	}
