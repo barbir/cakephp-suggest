@@ -19,6 +19,13 @@ class Suggest extends AppModel
 		// get the model object
 		$Model = ClassRegistry::init($model);
 
+		// security feature, if the provided field is not marked as
+		// safe for retrieval like this, return no results
+		if(!isset($Model->suggestibleFields) || !in_array($field, $Model->suggestibleFields))
+		{
+			return array();
+		}
+
 		// do the query
 		$results = $Model->find
 		(
